@@ -8,8 +8,58 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-<body>
-  <!-- Navbar here  -->
+<body class="
+{% if selected_theme == 'dark' or selected_theme is None %}
+bg-dark
+  {% elif selected_theme == 'light' %}
+bg-light
+  {% elif selected_theme == 'blue' %}
+bg-primary
+  {% elif selected_theme == 'lightblue' %}
+bg-info
+  {% elif selected_theme == 'grey' %}
+bg-secondary
+  {% elif selected_theme == 'green' %}
+bg-success
+  {% elif selected_theme == 'red' %}
+bg-danger
+  {% elif selected_theme == 'yellow' %}
+bg-warning
+  {% endif %}
+
+">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+    <a class="navbar-brand" href="#"> HackKey</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {% if page_name == 'index' %} active {% endif %}" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if page_name == 'passwords' %} active {% endif %}" href="/passwords">Passwords</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if page_name == 'gacha' %} active {% endif %}" href="/gacha">Lock Lottery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">New Features</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="wrapper p-2">
+    <div class="progress">
+    <div class="progress-bar bg-success progress-bar-striped active" role="progressbar" aria-value-now="{{progress_val}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress_val}}%">
+    {{xp}}/{{xp_to_level_up}}
+    </div>
+    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" aria-value-now="{{remaining_progress_val}}" style="width: {{remaining_progress_val}}%"></div>
+  </div>
+  </div>
+  
 
   <div class="wrapper">
     {% block content %}
