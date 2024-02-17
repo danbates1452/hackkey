@@ -35,22 +35,31 @@ bg-warning
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link active" href="/#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link {% if page_name == 'index' %} active {% endif %}" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/passwords">Passwords</a>
+          <a class="nav-link {% if page_name == 'passwords' %} active {% endif %}" href="/passwords">Passwords</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/gacha">Lock Lottery</a>
+          <a class="nav-link {% if page_name == 'gacha' %} active {% endif %}" href="/gacha">Lock Lottery</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">New Features</a>
         </li>
       </ul>
     </div>
-    <div class="text">Jaw?</div>
   </nav>
+
+  <div class="wrapper p-2">
+    <div class="progress">
+    <div class="progress-bar bg-success progress-bar-striped active" role="progressbar" aria-value-now="{{progress_val}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress_val}}%">
+    {{xp}}/{{xp_to_level_up}}
+    </div>
+    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" aria-value-now="{{remaining_progress_val}}" style="width: {{remaining_progress_val}}%"></div>
+  </div>
+  </div>
+  
 
   <div class="wrapper">
     {% block content %}
