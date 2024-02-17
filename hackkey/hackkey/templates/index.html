@@ -35,21 +35,20 @@ bg-warning
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link active" href="/#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link {% if page_name == 'index' %} active {% endif %}" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/passwords">Passwords</a>
+          <a class="nav-link {% if page_name == 'passwords' %} active {% endif %}" href="/passwords">Passwords</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/gacha">Lock Lottery</a>
+          <a class="nav-link {% if page_name == 'gacha' %} active {% endif %}" href="/gacha">Lock Lottery</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">New Features</a>
         </li>
       </ul>
     </div>
-    <div class="text">Jaw?</div>
   </nav>
 
   <div class="wrapper">
