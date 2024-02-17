@@ -8,6 +8,6 @@ def index(request):
 
 def home(request):
     context = {
-        'message': 'have fun',
+        'message': 'have fun bozo',
     }
     return render(request, 'home.html', context=context)
