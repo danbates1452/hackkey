@@ -51,6 +51,16 @@ bg-warning
     </div>
   </nav>
 
+  <div class="wrapper p-2">
+    <div class="progress">
+    <div class="progress-bar bg-success progress-bar-striped active" role="progressbar" aria-value-now="{{progress_val}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress_val}}%">
+    {{xp}}/{{xp_to_level_up}}
+    </div>
+    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" aria-value-now="{{remaining_progress_val}}" style="width: {{remaining_progress_val}}%"></div>
+  </div>
+  </div>
+  
+
   <div class="wrapper">
     {% block content %}
     {% endblock %}
