@@ -4,10 +4,14 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def index(request):
-    return home(request)
-
-def home(request):
     context = {
-        'message': 'have fun',
+        'message': 'index',
     }
-    return render(request, 'home.html', context=context)
+    return render(request, 'index.html', context=context)
+
+def login(request):
+    context = {
+        'message' : 'login',
+    }
+    
+    return render(request, 'login.html', context=context)
