@@ -11,7 +11,7 @@ def index(request):
 
 def login(request):
     context = {
-        'message' : 'login',
+        'message': 'login',
     }
     
     return render(request, 'login.html', context=context)
