@@ -9,7 +9,7 @@ Password manager written for HackSussex2024 by the 💣 team.
 4. Run `pip install -r ./requirements.txt` to install our dependencies.
 
 ### Commands
-You will want to `cd hackkey` to move your working directory to the hackkey/hackkey subdirectory for Django commands.
-- Run development server `python manage.py runserver`
-- Apply migrations `python manage.py migrate`
-- Open the management command line `python manage.py` 
+- Run development server `python hackkey/manage.py runserver`
+- Apply migrations `python hackkey/manage.py migrate`
+- Open the management command line `python hackkey/manage.py`
+- Update your dependencies `pip install -r ./requirements.txt`
