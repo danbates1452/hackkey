@@ -4,7 +4,18 @@
 
 gacha template
 {{ 
-  <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+  {% if roll_outcome == 0 %}
+    <div class="alert alert-primary" role="alert">Commmon</div>
+  {% elif roll_outcome == 1 %}
+    <div class="alert alert-primary" role="alert">Uncommon</div>
+  {% elif roll_outcome == 2 %}
+    <div class="alert alert-primary" role="alert">Rare</div>
+  {% elif roll_outcome == 3 %}
+    <div class="alert alert-primary" role="alert">Super Rare</div>
+  {% else roll_outcome == 1 %}
+    <div class="alert alert-primary" role="alert">Uncommon</div>
+  
+  <button onclick="roll()" id="btnRoll" type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
 }}
 
 {% endblock %}

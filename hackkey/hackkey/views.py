@@ -34,10 +34,14 @@ def login(request):
     
     return render(request, 'login.html', context=context)
 
-def gacha(request):
+def gacha(request):    
+    from hackkey.gacha import roll
     context = universal_context.copy()
+    if request.POST:
+        myvar = request.POST.get('myvar', 'jaw')
     context.update({
         'page_name': 'gacha',
+        'roll_outcome': roll()
     })
 
     return render(request, 'gacha.html', context=context)
