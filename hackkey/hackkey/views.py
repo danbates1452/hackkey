@@ -46,6 +46,7 @@ def passwords(request):
     context = universal_context.copy()
     context.update({
         'page_name': 'passwords',
+        'page_title': 'Password Generator',
     })
 
     return render(request, 'passwords.html', context=context)
