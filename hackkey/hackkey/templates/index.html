@@ -8,8 +8,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-<body>
-  <!-- Navbar here  -->
+<body class="
+{% if selected_theme == 'dark' or selected_theme is None %}
+bg-dark
+  {% elif selected_theme == 'light' %}
+bg-light
+  {% elif selected_theme == 'blue' %}
+bg-primary
+  {% elif selected_theme == 'lightblue' %}
+bg-info
+  {% elif selected_theme == 'grey' %}
+bg-secondary
+  {% elif selected_theme == 'green' %}
+bg-success
+  {% elif selected_theme == 'red' %}
+bg-danger
+  {% elif selected_theme == 'yellow' %}
+bg-warning
+  {% endif %}
+
+">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
     <a class="navbar-brand" href="#"> HackKey</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
