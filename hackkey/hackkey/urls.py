@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from hackkey.views import index, login
+from hackkey.views import index, login, gacha, passwords
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('login/', login, name='login'),
+    path('gacha/', gacha, name='gacha'),
+    path('passwords/', passwords, name='passwords'),
 ]
 
 

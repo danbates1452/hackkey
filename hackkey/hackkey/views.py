@@ -15,3 +15,15 @@ def login(request):
     }
     
     return render(request, 'login.html', context=context)
+
+def gacha(request):
+    context = {
+        'message': 'gacha',
+    }
+    return render(request, 'gacha.html', context=context)
+
+def passwords(request):
+    context = {
+        'message': 'passwords',
+    }
+    return render(request, 'passwords.html', context=context)
