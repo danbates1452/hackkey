@@ -23,6 +23,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('login/', login, name='login'),
     path('gacha/', gacha, name='gacha'),
+    path('gacha/<int:outcome>/', gacha, name='gacha_rolled'),
     path('passwords/', passwords, name='passwords'),
 ]
 

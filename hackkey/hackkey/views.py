@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from .password_generator import generate_secure_password
 from hackkey.models import Users, Entries, PremiumFeatures, GachaRewards
 
 universal_context = dict()
+test_user = Users.objects.get_or_create(id=1)[0]
 
 def setup_universal_context():
-    test_user = Users.objects.get_or_create(id=1)[0]
     selected_theme = test_user.selected_theme
     
     test_user.selected_theme = 'blue'
+    
     test_user.save()
     #todo: implement a way for users to choose a rewarded theme
 
@@ -44,10 +45,25 @@ def login(request):
     
     return render(request, 'login.html', context=context)
 
-def gacha(request):
+def gacha(request, outcome=-1):
+    roll_outcome = outcome
+    rolls_owned = test_user.rolls_owned
+    from hackkey.gacha import roll
     context = universal_context.copy()
+    if request.method == 'POST':
+        if request.POST.get('btnRoll') == '1':
+            new_roll = roll()
+        if rolls_owned > 0:
+            rolls_owned -= 1
+            test_user.rolls_owned = rolls_owned
+            test_user.save()
+            return HttpResponseRedirect("/gacha/" + str(new_roll))
+
     context.update({
+        'rolls_owned': rolls_owned,
         'page_name': 'gacha',
+        'roll_outcome': roll_outcome,
+        #'button_roll': new_roll,
     })
 
     return render(request, 'gacha.html', context=context)

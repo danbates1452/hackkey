@@ -2,7 +2,33 @@
 
 {% block content %}
 
-gacha template
-{{ message }}
+
+  <p class="text-info">Rolls Owned: {{rolls_owned}}</p>
+  {% if rolls_owned >= 1 %}
+    <form action=/gacha/ method="post">
+      {% csrf_token %}
+      <button type="submit" name="btnRoll" value=1 class="btn btn-primary btn-lg">Roll</button>
+    </form>
+  {% else %}
+    <button class="btn btn-secondary btn-lg" disabled>Roll</button>
+  {% endif %}
+
+
+  {% if roll_outcome == -1 %}
+  
+  {% elif roll_outcome == 0 %}
+    <div class="alert alert-primary" role="alert">Commmon</div>
+  {% elif roll_outcome == 1 %}
+    <div class="alert alert-primary" role="alert">Uncommon</div>
+  {% elif roll_outcome == 2 %}
+    <div class="alert alert-primary" role="alert">Rare</div>
+  {% elif roll_outcome == 3 %}
+    <div class="alert alert-primary" role="alert">Super Rare</div>
+  {% elif roll_outcome == 4%}
+    <div class="alert alert-primary" role="alert">Ultra Rare</div>
+  {% else %}
+  <div class="alert alert-primary" role="alert">Error</div>
+  {% endif %}
+
 
 {% endblock %}
