@@ -55,27 +55,17 @@ def gacha(request):
 def passwords(request):
     generated_password = ""
     context = universal_context.copy()
-    print(request.method)
-    variable_i_want_to_output = ''
-
     if request.method == 'POST':
-        #myvar = request.POST.get('myvar')
-        print([(key, value) for key, value in request.POST.items()])
         if request.POST.get('btn_generate_password') == '1':
-            print("salt" + generate_secure_password())
             generated_password = generate_secure_password()
-            # variable_i_want_to_output = method_i_feel_like_calling_rn()
             context.update({
                 'generated_password': generated_password,
-                # print(generated_password:)
             })            
     context.update({
         'page_name': 'passwords',
         'page_title': 'Password Generator',        
-        'variable_i_want_to_output': variable_i_want_to_output,
     })
 
     return render(request, 'passwords.html', context=context)
-
 
 setup_universal_context()
