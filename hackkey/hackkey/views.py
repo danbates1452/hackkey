@@ -71,17 +71,8 @@ def passwords(request):
             'generated_password': generated_password,
             'email_address': usr_username,
             })
-            
-
             print(f"User stored: {usr_username}, Pass stored: {usr_password}")
             pass_credentials_to_database(1, usr_username, usr_password)
-
-        # a@a.com
-         
-        # elif request.POST.get('btn_store_credentials') == '2':
-        #     usr_username = request.POST.get('exampleInputEmail1')
-        #     usr_password = request.GET.get('exampleInputPassword1')
-        #     # pass_credentials_to_database(1, usr_username, usr_password)
 
     context.update({
         'page_name': 'passwords',
