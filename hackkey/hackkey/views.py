@@ -48,12 +48,12 @@ def passwords(request):
     context = universal_context.copy()
     print(request.method)
     variable_i_want_to_output = ''
+
     if request.method == 'POST':
         #myvar = request.POST.get('myvar')
         print([(key, value) for key, value in request.POST.items()])
-        print("test")
-        if request.POST.get('my_flag') == '1':
-            print("salt" + generate_secure_password)
+        if request.POST.get('btn_generate_password') == '1':
+            print("salt" + generate_secure_password())
             generated_password = generate_secure_password()
             # variable_i_want_to_output = method_i_feel_like_calling_rn()
             context.update({
