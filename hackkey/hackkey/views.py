@@ -2,16 +2,25 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .password_generator import generate_secure_password
+from hackkey.models import Users, Entries, PremiumFeatures, GachaRewards
 
 universal_context = dict()
 
 def setup_universal_context():
+    test_user = Users.objects.get_or_create(id=1)[0]
+    selected_theme = test_user.selected_theme
+    
+    test_user.selected_theme = 'blue'
+    test_user.save()
+    #todo: implement a way for users to choose a rewarded theme
+
     xp = 700
     xp_to_level_up = 1000
     progress_val =  round(xp / xp_to_level_up * 100, 0)
     remaining_progress_val = 100 - progress_val
 
     universal_context.update({
+        'selected_theme': selected_theme,
         'xp': xp,
         'xp_to_level_up': xp_to_level_up,
         'progress_val': progress_val,
