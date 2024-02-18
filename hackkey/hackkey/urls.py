@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from hackkey.views import index, login, gacha, passwords
+from hackkey.views import index, login, gacha, passwords, daily
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('gacha/', gacha, name='gacha'),
     path('gacha/<int:outcome>/', gacha, name='gacha_rolled'),
     path('passwords/', passwords, name='passwords'),
+    path('daily/', daily, name='daily'),
 ]
 
 
