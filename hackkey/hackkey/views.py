@@ -11,7 +11,6 @@ def setup_universal_context():
     selected_theme = test_user.selected_theme
     
     test_user.selected_theme = 'blue'
-    
     test_user.save()
     #todo: implement a way for users to choose a rewarded theme
 
@@ -64,7 +63,7 @@ def gacha(request, outcome=-1):
         'page_name': 'gacha',
         'roll_outcome': roll_outcome,
     })
-
+    
     return render(request, 'gacha.html', context=context)
 
 def passwords(request):
@@ -89,7 +88,22 @@ def passwords(request):
             'generated_password': generated_password,
             'email_address': usr_username,
             })
+
             print(f"User stored: {usr_username}, Pass stored: {usr_password}, Url stored: {usr_url}")
+
+            new_entry = Entries(
+                user=test_user,
+                username=usr_username,
+                password=usr_password,
+                uri=usr_url,
+            )
+
+            new_entry.save()
+
+            print([[entry.user, entry.username, entry.password, entry.uri] for entry in Entries.objects.all()])            
+
+            
+
 
     context.update({
         'page_name': 'passwords',
