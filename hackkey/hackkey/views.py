@@ -76,19 +76,23 @@ def passwords(request):
         if 'btn_generate_password' in request.POST:
             generated_password = generate_secure_password()
             usr_username = request.POST.get('inp_email')
+            usr_url = request.POST.get('inp_url')
             context.update({
             'generated_password': generated_password,
+            'login_url': usr_url,
             'email_address': usr_username,
             })
         elif 'btn_store_credentials' in request.POST:
             usr_username = request.POST.get('inp_email')
             usr_password = request.POST.get('inp_password')
+            usr_url = request.POST.get('inp_url')
             context.update({
+            'login_url': usr_url,
             'generated_password': generated_password,
             'email_address': usr_username,
             })
-            print(f"User stored: {usr_username}, Pass stored: {usr_password}")
-            pass_credentials_to_database(1, usr_username, usr_password)
+            print(f"User stored: {usr_username}, Pass stored: {usr_password}, Url stored: {usr_url}")
+            pass_credentials_to_database(1, usr_username, usr_password, usr_url)
 
     context.update({
         'page_name': 'passwords',
