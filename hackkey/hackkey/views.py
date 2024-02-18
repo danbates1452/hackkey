@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from .password_generator import generate_secure_password
 from hackkey.models import Users, Entries, PremiumFeatures, GachaRewards
 
 universal_context = dict()
@@ -75,13 +76,19 @@ def gacha(request):
     return render(request, 'gacha.html', context=context)
 
 def passwords(request):
+    generated_password = ""
     context = universal_context.copy()
+    if request.method == 'POST':
+        if request.POST.get('btn_generate_password') == '1':
+            generated_password = generate_secure_password()
+            context.update({
+                'generated_password': generated_password,
+            })            
     context.update({
         'page_name': 'passwords',
-        'page_title': 'Password Generator',
+        'page_title': 'Password Generator',        
     })
 
     return render(request, 'passwords.html', context=context)
-
 
 setup_universal_context()
