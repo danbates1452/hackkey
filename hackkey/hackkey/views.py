@@ -37,11 +37,21 @@ def login(request):
 def gacha(request):    
     from hackkey.gacha import roll
     context = universal_context.copy()
-    if request.POST:
-        myvar = request.POST.get('myvar', 'jaw')
+    new_roll = 10
+    if request.method == "GET":
+        new_roll == 10
+    if request.method == 'POST':
+        new_roll = roll()
+    #if request.method == 'POST':
+    #    if request.POST.get('value') == 1:
+    #         print("CCCCCCCC")
+    #         new_roll = roll()
+    #         print("New Roll: " + new_roll)
     context.update({
+        'rolls_owned': 1,
         'page_name': 'gacha',
-        'roll_outcome': roll()
+        'roll_outcome': new_roll,
+        #'button_roll': new_roll,
     })
 
     return render(request, 'gacha.html', context=context)

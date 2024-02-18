@@ -13,7 +13,7 @@ def roll():
     outcome = 3
   if (gachaRoll > 98):
     outcome = 4
-    
+
   return outcome
 
 
