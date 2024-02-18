@@ -5,6 +5,21 @@
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+  <style>
+    .progress{
+      margin-bottom: 0;
+      color:black;
+      text-align: center;
+      position: relative;
+    }
+    .progress_text {
+      position: absolute;
+      left: 0;
+      right: 0;
+      color: #fff;
+      z-index: 1;  
+    }
+  </style>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
@@ -52,11 +67,11 @@ bg-warning
   </nav>
 
   <div class="wrapper p-2">
-    <div class="progress">
-    <div class="progress-bar bg-success progress-bar-striped active" role="progressbar" aria-value-now="{{progress_val}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress_val}}%">
-    {{xp}}/{{xp_to_level_up}}
+    <div class="progress" style="height:40px">
+    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-value-now="{{progress_val}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress_val}}%">
+    <span class="progress_text fs-3">{{xp}}/{{xp_to_level_up}}</span>
     </div>
-    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" aria-value-now="{{remaining_progress_val}}" style="width: {{remaining_progress_val}}%"></div>
+    <div class="progress-bar bg-danger" role="progressbar" aria-value-now="{{remaining_progress_val}}" style="width: {{remaining_progress_val}}%"></div>
   </div>
   </div>
   

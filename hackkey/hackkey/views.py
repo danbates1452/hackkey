@@ -62,7 +62,6 @@ def gacha(request, outcome=-1):
         'rolls_owned': rolls_owned,
         'page_name': 'gacha',
         'roll_outcome': roll_outcome,
-        #'button_roll': new_roll,
     })
     
     return render(request, 'gacha.html', context=context)
