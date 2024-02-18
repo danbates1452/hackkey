@@ -47,7 +47,7 @@ def login(request):
 
 def gacha(request, outcome=-1):
     roll_outcome = outcome
-    rolls_owned = test_user.rolls_owned + 1
+    rolls_owned = test_user.rolls_owned
     from hackkey.gacha import roll
     context = universal_context.copy()
     if request.method == 'POST':
