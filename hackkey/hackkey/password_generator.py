@@ -11,4 +11,4 @@ def generate_secure_password(level=1, length=10):
         # code for enhanced code generation will apply
 
 def pass_credentials_to_database(usrID, username, password):
-    print(usrID, username, password)
+    # pass to DB here
