@@ -39,7 +39,6 @@ class Users(models.Model):
 
 class Entries(models.Model):
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    entry_id = models.CharField(max_length=REASONABLE_MAX_STRING_LENGTH)
     username = models.CharField(max_length=REASONABLE_MAX_STRING_LENGTH)
     password = models.CharField(max_length=REASONABLE_MAX_STRING_LENGTH) #hashed
     uri = models.CharField(max_length=REASONABLE_MAX_STRING_LENGTH) #todo: expand to having multiple URIs

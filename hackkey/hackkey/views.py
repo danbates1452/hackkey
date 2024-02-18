@@ -63,7 +63,6 @@ def gacha(request, outcome=-1):
         'rolls_owned': rolls_owned,
         'page_name': 'gacha',
         'roll_outcome': roll_outcome,
-        #'button_roll': new_roll,
     })
 
     return render(request, 'gacha.html', context=context)
@@ -72,7 +71,6 @@ def passwords(request):
     generated_password = ""
     context = universal_context.copy()
     if request.method == 'POST':
-        # if request.POST.get('btn_generate_password') == '1':
         if 'btn_generate_password' in request.POST:
             generated_password = generate_secure_password()
             usr_username = request.POST.get('inp_email')
@@ -92,7 +90,6 @@ def passwords(request):
             'email_address': usr_username,
             })
             print(f"User stored: {usr_username}, Pass stored: {usr_password}, Url stored: {usr_url}")
-            pass_credentials_to_database(1, usr_username, usr_password, usr_url)
 
     context.update({
         'page_name': 'passwords',
