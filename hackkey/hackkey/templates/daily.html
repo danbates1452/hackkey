@@ -1,0 +1,20 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+<div class="container bg-light p-1">
+    <div class="jumbotron mt-4 text-center ">
+        <h2>Collect your Daily Roll</h2>
+        
+        <form action=/daily/ method="post">
+            {% csrf_token %}
+            {% if has_claimed == False %}
+                <button type="submit" name="btnCollectDaily" value="1" class="btn btn-primary btn-lg">Collect</button>
+            {% else %}
+                <button class="btn btn-secondary btn-lg" disabled>Collect</button>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

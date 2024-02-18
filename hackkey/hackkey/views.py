@@ -44,6 +44,21 @@ def login(request):
     
     return render(request, 'login.html', context=context)
 
+
+def daily(request):
+    context = universal_context.copy()
+    if request.method == 'POST':
+        if request.POST.get('btnCollectDaily') == '1':
+            print("Collect")
+            test_user.login_daily_claimed = True
+            test_user.rolls_owned += 1
+    context.update({
+        'page_name': 'daily',
+        'has_claimed': test_user.login_daily_claimed,
+    })
+    
+    return render(request, 'daily.html', context=context)
+
 def gacha(request, outcome=-1):
     roll_outcome = outcome
     rolls_owned = test_user.rolls_owned
