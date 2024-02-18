@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from .password_generator import generate_secure_password
 from hackkey.models import Users, Entries, PremiumFeatures, GachaRewards
@@ -45,31 +45,24 @@ def login(request):
     
     return render(request, 'login.html', context=context)
 
-def gacha(request):    
-    rolls_owned = test_user.rolls_owned
+def gacha(request, outcome=-1):
+    roll_outcome = outcome
+    rolls_owned = test_user.rolls_owned + 1
     from hackkey.gacha import roll
     context = universal_context.copy()
-    new_roll = 10
-    if request.method == "GET":
-        new_roll == 10
     if request.method == 'POST':
-        if request.POST.get('btnRoll') == 1:
+        if request.POST.get('btnRoll') == '1':
             new_roll = roll()
-        new_roll = roll()
         if rolls_owned > 0:
             rolls_owned -= 1
             test_user.rolls_owned = rolls_owned
             test_user.save()
+            return HttpResponseRedirect("/gacha/" + str(new_roll))
 
-    #if request.method == 'POST':
-    #    if request.POST.get('value') == 1:
-    #         print("CCCCCCCC")
-    #         new_roll = roll()
-    #         print("New Roll: " + new_roll)
     context.update({
         'rolls_owned': rolls_owned,
         'page_name': 'gacha',
-        'roll_outcome': new_roll,
+        'roll_outcome': roll_outcome,
         #'button_roll': new_roll,
     })
 

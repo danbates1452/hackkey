@@ -14,7 +14,7 @@
   {% endif %}
 
 
-  {% if roll_outcome == 10 %}
+  {% if roll_outcome == -1 %}
   
   {% elif roll_outcome == 0 %}
     <div class="alert alert-primary" role="alert">Commmon</div>
@@ -27,7 +27,7 @@
   {% elif roll_outcome == 4%}
     <div class="alert alert-primary" role="alert">Ultra Rare</div>
   {% else %}
-  <div class="alert alert-primary" role="alert">Start</div>
+  <div class="alert alert-primary" role="alert">Error</div>
   {% endif %}
 
 
